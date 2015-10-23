@@ -64,6 +64,18 @@ else
     echo " NERDTree already installed..."
 fi
 
+if [ ! -d ~/.vim/colors ]
+then
+    mkdir ~/.vim/colors
+    echo "Creating colorscheme folder"
+else
+    echo "Colorscheme folder already exists"
+fi
+
+cd ~/.vim/colors
+curl -G https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim -o monokai.vim
+echo "Installed monokai theme!"
+
 echo "\"Some cool tips'n'tricks:
 \":%!xxd and :%!xxd -r transform and revert vim into a hex editor
 \":.! inserts the output of an external command into the current document
@@ -132,7 +144,8 @@ set expandtab
 set autoindent
 set smartindent
 
-:syntax on
+syntax on
+colorscheme monokai
 
 set number
 set hlsearch
