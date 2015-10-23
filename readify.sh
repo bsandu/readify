@@ -146,13 +146,14 @@ set expandtab
 
 set autoindent
 set smartindent
-set smartcase
 
 syntax on
 colorscheme monokai
 
 set number
 set hlsearch
+set ignorecase
+set smartcase
 set incsearch
 set foldenable
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -165,5 +166,29 @@ autocmd bufenter * if (winnr(\"$\") == 1 && exists(\"b:NERDTreeType\") && b:NERD
 let g:ctrlp_working_path_mode = 0
 
 execute pathogen#infect()" > ~/.vimrc
+echo "Installed new vimrc!"
 
-
+echo "[global_config]
+  geometry_hinting = False
+  enabled_plugins = ,
+  borderless = True
+  handle_size = 1
+  tab_position = hidden
+[keybindings]
+  broadcast_all = <Shift><Super>a
+  broadcast_off = <Shift><Super>x
+[profiles]
+  [[default]]
+    background_image = None
+    scrollback_infinite = True
+    show_titlebar = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]" > ~/.config/terminator/config
+echo "Installed new terminator config!"
