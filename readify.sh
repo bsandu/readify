@@ -143,6 +143,7 @@ set expandtab
 
 set autoindent
 set smartindent
+set smartcase
 
 syntax on
 colorscheme monokai
