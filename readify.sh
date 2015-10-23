@@ -1,8 +1,9 @@
 #!/bin/bash
 
-which terminator || sudo apt-get install terminator
-which curl || sudo apt-get install curl
-which vim || sudo apt-get install vim
+which terminator || sudo apt-get install -y --force-yes terminator
+which curl || sudo apt-get install -y --force-yes curl
+which vim || sudo apt-get install -y --force-yes vim
+which htop || sudo apt-get install -y --force-yes htop
 
 if [ ! -d ~/.vim/autoload -a ! -d ~/.vim/bundle ]
 then
@@ -73,8 +74,10 @@ else
 fi
 
 cd ~/.vim/colors
-curl -G https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim -o monokai.vim
+wget https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim
 echo "Installed monokai theme!"
+wget https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
+echo "Installed jellybeans theme!"
 
 echo "\"Some cool tips'n'tricks:
 \":%!xxd and :%!xxd -r transform and revert vim into a hex editor
@@ -162,3 +165,5 @@ autocmd bufenter * if (winnr(\"$\") == 1 && exists(\"b:NERDTreeType\") && b:NERD
 let g:ctrlp_working_path_mode = 0
 
 execute pathogen#infect()" > ~/.vimrc
+
+
