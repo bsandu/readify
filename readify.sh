@@ -156,6 +156,7 @@ set ignorecase
 set smartcase
 set incsearch
 set foldenable
+set mouse=a
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 filetype plugin on
