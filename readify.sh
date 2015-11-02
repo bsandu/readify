@@ -121,6 +121,8 @@ nmap k gk
 nmap <Down> g<Down>
 nmap <Up> g<Up>
 
+let g:rainbow_active = 1
+
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
