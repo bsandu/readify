@@ -37,6 +37,33 @@ else
     echo "CtrlP already installed..."
 fi
 
+if [ ! -d ~/.vim/bundle/rainbow ]
+then
+    cd ~/.vim/bundle
+    git clone https://github.com/luochen1990/rainbow
+    echo "Installed Rainbow Parantheses!"
+else
+    echo "Rainbow Parantheses already installed..."
+fi
+
+if [ ! -d ~/.vim/bundle/nerdcommenter.git ]
+then
+    cd ~/.vim/bundle
+    git clone https://github.com/scrooloose/nerdcommenter.git
+    echo "Installed NERDCommenter!"
+else
+    echo " NERDCommenter already installed..."
+fi
+
+if [ ! -d ~/.vim/bundle/nerdtree.git ]
+then
+    cd ~/.vim/bundle
+    git clone https://github.com/scrooloose/nerdtree.git
+    echo "Installed NERDTree!"
+else
+    echo " NERDTree already installed..."
+fi
+
 echo "\"Some cool tips'n'tricks:
 \":%!xxd and :%!xxd -r transform and revert vim into a hex editor
 \":.! inserts the output of an external command into the current document
@@ -88,6 +115,12 @@ echo "\"Some cool tips'n'tricks:
 \"<c-r> - regex
 \":cd [path] in normal mode to change ctrlp path
 
+nmap j gj
+nmap k gk
+
+nmap <Down> g<Down>
+nmap <Up> g<Up>
+
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
@@ -104,6 +137,11 @@ set hlsearch
 set incsearch
 set foldenable
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+filetype plugin on
+autocmd vimenter * NERDTree
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr(\"$\") == 1 && exists(\"b:NERDTreeType\") && b:NERDTreeType == \"primary\") | q | endif
 
 let g:ctrlp_working_path_mode = 0
 
