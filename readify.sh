@@ -169,6 +169,12 @@ let g:ctrlp_working_path_mode = 0
 execute pathogen#infect()" > ~/.vimrc
 echo "Installed new vimrc!"
 
+if [ ! -d ~/.config/terminator ]
+then
+    mkdir ~/.config/terminator
+    echo "Created terminator folder in .config"
+fi
+
 echo "[global_config]
   geometry_hinting = False
   enabled_plugins = ,
