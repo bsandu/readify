@@ -150,6 +150,7 @@ set smartindent
 syntax on
 colorscheme monokai
 
+set colorcolumn=80
 set number
 set hlsearch
 set ignorecase
