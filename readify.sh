@@ -5,6 +5,11 @@ which curl || sudo apt-get install -y --force-yes curl
 which vim || sudo apt-get install -y --force-yes vim
 which htop || sudo apt-get install -y --force-yes htop
 
+if [ ! -d ~/.vim ]
+then
+    mkdir ~/.vim
+fi
+
 if [ ! -d ~/.vim/autoload -a ! -d ~/.vim/bundle ]
 then
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
@@ -78,6 +83,8 @@ wget https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai
 echo "Installed monokai theme!"
 wget https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
 echo "Installed jellybeans theme!"
+
+touch ~/.vimrc
 
 echo "\"Some cool tips'n'tricks:
 \":%!xxd and :%!xxd -r transform and revert vim into a hex editor
