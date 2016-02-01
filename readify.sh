@@ -165,6 +165,10 @@ set smartcase
 set incsearch
 set foldenable
 set mouse=a
+
+set foldnestmax=1
+setlocal fdm=syntax
+
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 filetype plugin on
