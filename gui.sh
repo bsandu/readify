@@ -1,6 +1,7 @@
 #!/bin/sh
 
 which terminator || sudo apt-get install -y --allow terminator
+which chromium-browser || sudo apt-get install -y --allow chromium-browser
 
 if [ ! -d ~/.config/terminator ]
 then
