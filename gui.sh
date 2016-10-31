@@ -8,7 +8,8 @@ then
     echo "Created terminator folder in .config"
 fi
 
-echo "[global_config]
+cat > ~/.config/terminator/confg <<EOF
+[global_config]
   geometry_hinting = False
   enabled_plugins = ,
   borderless = True
@@ -30,8 +31,17 @@ echo "[global_config]
     [[[window0]]]
       type = Window
       parent = ""
-[plugins]" > ~/.config/terminator/config
+[plugins]
+EOF
+
 echo "Installed new terminator config!"
 
 wget https://atom.io/download/deb -O atom.deb
 sudo dpkg -i atom.deb
+apm install minimap
+apm install file-icons
+apm install linter
+apm install linter-jshint
+apm install seti-ui
+apm install neon-syntax
+apm install monokai
