@@ -157,11 +157,19 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-
 autocmd vimenter * NERDTree
 autocmd VimEnter * wincmd p
 map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr(\"$\") == 1 && exists(\"b:NERDTreeType\") && b:NERDTreeType == \"primary\") | q | endif
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 let g:ctrlp_working_path_mode = 0
 
