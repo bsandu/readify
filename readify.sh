@@ -5,35 +5,20 @@
 which tmux || sudo apt-get install -y --allow tmux
 which curl || sudo apt-get install -y --allow curl
 which htop || sudo apt-get install -y --allow htop
-which terminator || sudo apt-get install -y --allow terminator
 
-if [ ! -d ~/.config/terminator ]
-then
-    mkdir ~/.config/terminator
-    echo "Created terminator folder in .config"
-fi
+cat > ~/.tmux.conf <<EOF
+# remap prefix from 'C-b' to 'C-s'
+unbind C-b
+set-option -g prefix C-s
+bind-key C-s send-prefix
 
-echo "[global_config]
-  geometry_hinting = False
-  enabled_plugins = ,
-  borderless = True
-  handle_size = 1
-  tab_position = hidden
-[keybindings]
-  broadcast_all = <Shift><Super>a
-  broadcast_off = <Shift><Super>x
-[profiles]
-  [[default]]
-    background_image = None
-    scrollback_infinite = True
-    show_titlebar = False
-[layouts]
-  [[default]]
-    [[[child1]]]
-      type = Terminal
-      parent = window0
-    [[[window0]]]
-      type = Window
-      parent = ""
-[plugins]" > ~/.config/terminator/config
-echo "Installed new terminator config!"
+bind | split-window -h
+bind - split-window -v
+unbind '"'
+unbind %
+
+bind -n C-Left select-pane -L
+bind -n C-Right select-pane -R
+bind -n C-Up select-pane -U
+bind -n C-Down select-pane -D
+EOF
