@@ -5,20 +5,10 @@ function install_gui {
 
     sudo ./nogui.sh
     sudo ./install_terminator.sh
+    ./install_atom.sh
 
     source ./utils.sh
     install_deb "chromium-browser"
-    install_deb "atom"
-    mkdir -p ~/.atom
-    #sudo chown -R `whoami` ~/.atom
-    apm install minimap
-    apm install file-icons
-    apm install linter
-    apm install linter-jshint
-    apm install seti-ui
-    apm install neon-syntax
-    apm install monokai
-
 }
 
 function set_workspaces {
