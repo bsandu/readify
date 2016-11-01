@@ -1,17 +1,13 @@
 #!/bin/bash
 
 function install_gui {
-    source ./utils.sh
-    source ./nogui.sh
-    source ./install_terminator.sh
-
     sudo add-apt-repository ppa:webupd8team/atom
-    sudo apt-get update
 
-    install_nogui
-    install_terminator
+    ./nogui.sh
+    ./install_terminator.sh
+
+    source ./utils.sh
     install_deb "chromium-browser"
-
     install_deb "atom"
     apm install minimap
     apm install file-icons
