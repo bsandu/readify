@@ -1,15 +1,16 @@
 #!/bin/bash
 
 function install_gui {
-    sudo add-apt-repository ppa:webupd8team/atom
+    sudo add-apt-repository ppa:webupd8team/atom -y
 
-    ./nogui.sh
-    ./install_terminator.sh
+    sudo ./nogui.sh
+    sudo ./install_terminator.sh
 
     source ./utils.sh
     install_deb "chromium-browser"
     install_deb "atom"
-    sudo chown -R `whoami` ~/.atom
+    mkdir -p ~/.atom
+    #sudo chown -R `whoami` ~/.atom
     apm install minimap
     apm install file-icons
     apm install linter
@@ -18,8 +19,12 @@ function install_gui {
     apm install neon-syntax
     apm install monokai
 
+}
+
+function set_workspaces {
     gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 2
     gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize 2
 }
 
 install_gui
+set_workspaces

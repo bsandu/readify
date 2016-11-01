@@ -3,8 +3,8 @@
 function install_nogui {
     sudo apt-get update
 
-    ./install_vim.sh
-    ./install_tmux.sh
+    sudo ./install_vim.sh
+    sudo ./install_tmux.sh
 
     source ./utils.sh
 
