@@ -5,15 +5,14 @@ function install_gui {
     source ./nogui.sh
     source ./install_terminator.sh
 
+    sudo add-apt-repository ppa:webupd8team/atom
+    sudo apt-get update
+
     install_nogui
     install_terminator
     install_deb "chromium-browser"
 
-    gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 2
-    gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize 2
-
-    wget https://atom.io/download/deb -O atom.deb
-    sudo dpkg -i atom.deb
+    install_deb "atom"
     apm install minimap
     apm install file-icons
     apm install linter
@@ -21,6 +20,9 @@ function install_gui {
     apm install seti-ui
     apm install neon-syntax
     apm install monokai
+
+    gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 2
+    gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize 2
 }
 
 install_gui

@@ -2,7 +2,7 @@ function install_deb {
     exists=`apt-cache policy $1 | grep Installed | grep -v none`
     if [ "$exists" == "" ]
     then
-        sudo apt-get -y --allow $1
+        sudo apt-get -y install $1
     else
         echo "Package $1 already exists!"
     fi
