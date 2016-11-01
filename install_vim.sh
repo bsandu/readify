@@ -129,3 +129,5 @@ let g:ctrlp_working_path_mode = 0
 execute pathogen#infect()
 EOF
 }
+
+install_vim

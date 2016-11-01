@@ -32,3 +32,5 @@ parent = ""
 [plugins]
 EOF
 }
+
+install_terminator

@@ -22,3 +22,5 @@ function install_gui {
     apm install neon-syntax
     apm install monokai
 }
+
+install_gui

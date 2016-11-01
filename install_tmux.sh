@@ -35,3 +35,5 @@ setw -g mode-keys vi
 setw -g monitor-activity on
 EOF
 }
+
+install_tmux
