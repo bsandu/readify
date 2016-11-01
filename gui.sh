@@ -9,6 +9,7 @@ function install_gui {
     source ./utils.sh
     install_deb "chromium-browser"
     install_deb "atom"
+    sudo chown -R `whoami` ~/.atom
     apm install minimap
     apm install file-icons
     apm install linter
