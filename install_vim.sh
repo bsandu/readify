@@ -1,71 +1,24 @@
 #!/bin/bash
 
-which vim || sudo apt-get install -y --allow vim
-which git || sudo apt-get install -y --allow git
+function install_vim {
+    source ./utils.sh
 
-function install_pathogen {
-    if [ ! -d ~/.vim ]
-    then
-        mkdir ~/.vim
-    fi
+    install_deb "vim"
 
-    if [ ! -d ~/.vim/autoload -a ! -d ~/.vim/bundle ]
-    then
-        mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-        curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-    fi
-}
+    install_pathogen
 
-function install_vim_plugin {
-    folder=${1##*/}
-    folder=${folder%%.git}
-    if [ ! -d ~/.vim/bundle/$folder ]
-    then
-        oldloc=`pwd`
-        cd ~/.vim/bundle
-        git clone $1
-        echo "Installed package $folder"
-        cd $oldloc
-    else
-        echo "Package $folder already exists"
-    fi
-}
+    install_vim_plugin "https://github.com/godlygeek/tabular.git"
+    install_vim_plugin "https://github.com/kien/ctrlp.vim.git"
+    install_vim_plugin "https://github.com/luochen1990/rainbow"
+    install_vim_plugin "https://github.com/scrooloose/nerdcommenter.git"
+    install_vim_plugin "https://github.com/scrooloose/nerdtree.git"
+    install_vim_plugin "https://github.com/sheerun/vim-polyglot.git"
 
-function install_vim_theme {
-    if [ ! -d ~/.vim/colors ]
-    then
-        mkdir -p ~/.vim/colors
-        echo "Creating colorscheme folder"
-    else
-        echo "Colorscheme folder already exists"
-    fi
+    install_vim_theme "https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim"
+    install_vim_theme "https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim"
+    install_vim_theme "https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim"
 
-    colorscheme=${1##*/}
-    if [ ! -f ~/.vim/colors/$colorscheme ]
-    then
-        oldloc=`pwd`
-        cd ~/.vim/colors
-        wget $1
-        echo "Installed colorscheme $colorscheme"
-    else
-        echo "Colorschepe $colorscheme already exists!"
-    fi
-}
-
-install_pathogen
-
-install_vim_plugin "https://github.com/godlygeek/tabular.git"
-install_vim_plugin "https://github.com/kien/ctrlp.vim.git"
-install_vim_plugin "https://github.com/luochen1990/rainbow"
-install_vim_plugin "https://github.com/scrooloose/nerdcommenter.git"
-install_vim_plugin "https://github.com/scrooloose/nerdtree.git"
-install_vim_plugin "https://github.com/sheerun/vim-polyglot.git"
-
-install_vim_theme "https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim"
-install_vim_theme "https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim"
-install_vim_theme "https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim"
-
-cat > ~/.vimrc <<EOF
+    cat > ~/.vimrc <<EOF
 "Some cool tips'n'tricks:
 ":%!xxd and :%!xxd -r transform and revert vim into a hex editor
 ":.! inserts the output of an external command into the current document
@@ -161,13 +114,13 @@ autocmd vimenter * NERDTree
 autocmd VimEnter * wincmd p
 map <C-n> :NERDTreeToggle<CR>
 function! s:CloseIfOnlyNerdTreeLeft()
-  if exists("t:NERDTreeBufName")
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
-        q
-      endif
-    endif
-  endif
+if exists("t:NERDTreeBufName")
+if bufwinnr(t:NERDTreeBufName) != -1
+if winnr("$") == 1
+q
+endif
+endif
+endif
 endfunction
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
@@ -175,5 +128,4 @@ let g:ctrlp_working_path_mode = 0
 
 execute pathogen#infect()
 EOF
-
-echo "Installed new vimrc!"
+}
