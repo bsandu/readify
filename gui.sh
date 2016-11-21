@@ -1,8 +1,6 @@
 #!/bin/bash
 
 function install_gui {
-    sudo add-apt-repository ppa:webupd8team/atom -y
-
     sudo ./nogui.sh
     sudo ./install_terminator.sh
     ./install_atom.sh

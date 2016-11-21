@@ -1,9 +1,13 @@
 #!/bin/bash
 
 function install_atom {
-    source ./utils.sh
+    #atom_deb="atom-amd64.deb"
+    #latest=`curl https://github.com/atom/atom/releases/latest -s | cut -d "\"" -f 2`
+    #latest=${latest/tag/download}
+    #wget ${latest}/${atom_deb}
+    #sudo dpkg -i ${atom_deb}
+    #rm ${atom_deb}
 
-    install_deb "atom"
     mkdir -p ~/.atom
     #sudo chown -R `whoami` ~/.atom
     apm install minimap
