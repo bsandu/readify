@@ -13,10 +13,9 @@ function install_vim {
     install_vim_plugin "https://github.com/scrooloose/nerdcommenter.git"
     install_vim_plugin "https://github.com/scrooloose/nerdtree.git"
     install_vim_plugin "https://github.com/sheerun/vim-polyglot.git"
+    install_vim_plugin "https://github.com/airblade/vim-gitgutter.git"
 
     install_vim_theme "https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim"
-    install_vim_theme "https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim"
-    install_vim_theme "https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim"
 
     cat > ~/.vimrc <<EOF
 "Some cool tips'n'tricks:
@@ -86,7 +85,7 @@ set autoindent
 set smartindent
 
 syntax on
-colorscheme onedark
+colorscheme monokai
 
 set colorcolumn=80
 set number
